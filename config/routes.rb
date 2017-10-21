@@ -21,6 +21,14 @@ Rails.application.routes.draw do
   get "/login/new" => redirect("/not-gonna-happen"), as: :new_login # define new_login_path
   get "/logout" => "sessions#destroy"
 
+  # GitLab
+  if GITLAB_ENABLED
+    get '/auth/:provider/callback' => 'sessions#create'
+    get '/auth/failure' => 'sessions#failure'
+    get '/signin' => 'sessions#new', :as => :signin
+    get '/signout' => 'sessions#destroy', :as => :signout
+  end
+
   resources :api_tokens, only: [:destroy]
 
   resource :user

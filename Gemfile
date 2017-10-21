@@ -68,3 +68,7 @@ group :production do
   gem 'dalli',                 '~> 2.6.2'
   gem 'unicorn-worker-killer', '~> 0.4.2'
 end
+
+gem 'omniauth'
+gem 'omniauth-gitlab'
+
